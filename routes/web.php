@@ -30,5 +30,9 @@ Route::post('/login', [LoginController::class, 'store']);
 
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/addposts', [PostController::class, 'addpost'])->name('addposts');
 Route::post('/posts', [PostController::class, 'store']);
 
+// Route::get('/postlist', function(){
+//     return view('post.postlist');
+// })->name('postslist');

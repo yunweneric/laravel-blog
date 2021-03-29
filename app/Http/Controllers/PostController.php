@@ -8,10 +8,14 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::get();
-        // dd($posts);
+        $posts = Post::paginate(5);
         return view('post.index', ['posts'=>$posts]);
     }
+
+    public function addpost(){
+        return view('post.addpost');
+    }
+    
     public function store(Request $request){
 
         $this->validate($request, [
@@ -24,6 +28,6 @@ class PostController extends Controller
         $request->user()->posts()->create([
             'body'=>$request->body
         ]);
-        return back();
+        return redirect('posts');
     }
 }
